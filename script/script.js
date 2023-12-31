@@ -1,6 +1,17 @@
+let playerScore = 0;
+let computerScore = 0;
 for (let i=1; i<=5; i++){
     console.log(game());
 }
+
+if (playerScore > computerScore){
+    console.log("Player Wins!");
+}
+
+else{
+    console.log("Computer Wins!");
+}
+
 function game(){
     let options = ["Rock", "Paper", "Scissors"];
     function getComputerChoice(){
@@ -28,28 +39,34 @@ function game(){
                 return("It's a tie!");
             }
             else if (computerSelection == options[1]){
+                computerScore++;
                 return("Paper beats Rock! Computer wins!");
             }
             else{
+                playerScore++;
                 return("Rock beats Scissors! Player wins!");
             } 
         }
         else if (playerSelection == options[1].toLowerCase()){
             if (computerSelection == options[0]){
+                playerScore++;
                 return("Paper beats Rock! Player wins!");
             }
             else if (computerSelection == options[1]){
                 return("It's a tie!");
             }
             else{
+                computerScore++;
                 return("Scissors beat Paper! Computer wins!");
             } 
         }
         else if (playerSelection == options[2].toLowerCase()){
             if (computerSelection == options[0]){
+                computerScore++;
                 return("Rock beats Scissors! Computer wins!");
             }
             else if (computerSelection == options[1]){
+                playerScore++;
                 return("Scissors beat Paper! Player wins!");
             }
             else{
@@ -57,9 +74,10 @@ function game(){
             } 
         }
         else{
-            return ("Please enter a valid choice: (Rock, Paper, Scissors)")
+            return ("Please enter a valid choice: (Rock, Paper, Scissors)");
         }
     }
-    return playRound(playerSelection,computerSelection);   
+    let roundResult = playRound(playerSelection,computerSelection);
+    return `${roundResult} Player Score: ${playerScore}, Computer Score: ${computerScore}`; 
 }
 

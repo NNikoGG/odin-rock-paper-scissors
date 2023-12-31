@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
-for (let i=1; i<=5; i++){
+let i=1;
+for (i; i<=5; i++){
     console.log(game());
 }
 
@@ -36,6 +37,7 @@ function game(){
         playerSelection = playerSelection.toLowerCase();
         if (playerSelection == options[0].toLowerCase()){
             if (computerSelection == options[0]){
+                i--;
                 return("It's a tie!");
             }
             else if (computerSelection == options[1]){
@@ -53,6 +55,7 @@ function game(){
                 return("Paper beats Rock! Player wins!");
             }
             else if (computerSelection == options[1]){
+                i--;
                 return("It's a tie!");
             }
             else{
@@ -70,10 +73,12 @@ function game(){
                 return("Scissors beat Paper! Player wins!");
             }
             else{
+                i--;
                 return("It's a tie!");
             } 
         }
         else{
+            i--;
             return ("Please enter a valid choice: (Rock, Paper, Scissors)");
         }
     }
